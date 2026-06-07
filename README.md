@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 # 🏛️ AddaSmriti X
 **The World's Most Advanced Cultural Intelligence Operating System**
 
@@ -15,106 +15,122 @@
 
 ---
 
-## 🌟 Vision
-AddaSmriti X is a next-generation cultural preservation platform designed to rescue disappearing heritage, languages, and stories. By combining Spatial Computing (XR), Generative AI, Neural Voice Cloning, and interactive 3D graphs, we turn passive history into a living, interactive, and immortal digital ecosystem.
+## 🚀 Live Deployment Status
 
-Built specifically to scale to 10M+ users, AddaSmriti X aims to be the definitive "₹500 Crore" enterprise solution for UNESCO, museums, and families worldwide.
+| Service | Status | URL |
+|---|---|---|
+| Frontend | ✅ Live | https://frontend-kappa-six-68.vercel.app |
+| Backend | ⚠️ Pending deployment | Configured via `render.yaml` |
+| Database | ⚠️ Provisioning ready | `render.yaml` PostgreSQL blueprint |
 
----
-
-## 🚀 150+ Next-Gen Capabilities
-
-### 🧠 Digital Twin AI
-*   **Neural Voice Cloning:** Preserve the exact tone, dialect, and emotional resonance of elders using ElevenLabs integration.
-*   **Personality Matrix Emulation:** The AI learns humor patterns, storytelling styles, and emotional warmth to accurately emulate an individual.
-*   **Continuous Generational Learning:** The Digital Twin actively learns from every memory uploaded to its vault.
-*   **Multilingual Heritage Comprehension:** Real-time semantic translation across 16+ languages including Bengali, Hindi, and English.
-
-### 🧬 Memory DNA Engine
-*   **3D Interactive Graph:** Visualize your family history as a massive, interactive 3D universe using force-directed particle physics.
-*   **Pattern Recognition:** Cross-generational tracking of recipes, locations, and cultural impact over decades.
-*   **Generational Hotlinking:** See how a single memory of a grandmother's song links to a modern-day festival.
-
-### 🗺️ Spatial Exploration (VR/AR)
-*   **VR Kolkata 1950 Simulator:** Put on a headset and walk through historic streets and disappearing tram routes in 3D.
-*   **AR Memory Hotspots:** Point your camera at any real-world street to uncover geo-tagged heritage drops.
-*   **Interactive GIS Story Maps:** Global heatmaps showing the density of cultural preservation across 47+ countries.
-
-### 🎬 Generative Media
-*   **1-Click AI Auto-Documentary:** Instantly convert raw audio logs into cinematic video documentaries with generative B-roll.
-*   **Photo AI Restoration:** Automated colorization and upscaling of archival photographs.
-*   **Procedural Heritage Ambience:** Generative background music matching the historical era of the memory.
-
-### 📡 Virtual Adda Rooms
-*   **Live Spatial Audio:** Real-time voice community nodes (similar to Clubhouse/Spaces) dedicated to cultural storytelling.
-*   **Heritage Challenges:** Gamified quests (e.g., "Record a 1980s Monsoon Memory") to earn points and badges.
-*   **Automated Event Transcription:** Live Addas are transcribed, translated, and archived into the vault automatically.
-
-### 🛡️ Enterprise Security & Web3
-*   **End-to-End Encryption (E2EE):** Total privacy for sensitive family narratives.
-*   **Blockchain Archive:** Tamper-proof, decentralized storage using IPFS. Memory NFTs ensuring authenticity.
-*   **Granular Access Control:** Role-based access for family members, verified researchers, and the public.
+> Tip: Deploy the backend to Render using `render deploys create <service-id> --confirm` after selecting the active workspace.
 
 ---
 
-## 💻 Tech Stack Architecture
+## 🌟 Executive Summary
+AddaSmriti X is a culturally intelligent platform built to rescue and preserve heritage through generative AI, 3D memory graphs, and immersive storytelling.
 
-**Frontend:**
-*   **Framework:** Next.js 15 (App Router), React 19, TypeScript
-*   **Styling:** Tailwind CSS (Advanced Glassmorphism & Aurora Gradients)
-*   **Animations:** Framer Motion (Orchestrated Layouts), Tailwind-Animate
-*   **3D Graphics:** `Three.js`, `@react-three/fiber`, `react-force-graph-3d`
-*   **Icons & UI:** Lucide React, Radix Primitives
-
-**Backend & AI:**
-*   **API Layer:** FastAPI (Python 3.11), Pydantic
-*   **AI Models:** GPT-4o, Claude 3.5 Sonnet, Whisper (Transcription)
-*   **Audio Synthesis:** ElevenLabs Neural TTS
-*   **Database:** PostgreSQL (Relational), Neo4j (Knowledge Graphs)
-*   **Vector Search:** Pinecone (Semantic Memory Retrieval)
-
-**Infrastructure:**
-*   **Deployment:** Vercel (Frontend), Render (Backend/DB)
-*   **Containerization:** Docker & Docker Compose
-*   **CI/CD:** GitHub Actions
+It is designed to support:
+* **Enterprise-grade heritage preservation** for museums, education, and family archives
+* **AI-powered memory cloning** with voice, emotion, and contextual recall
+* **Spatial storytelling** with interactive 3D memory topologies
+* **Secure multimodal archives** with privacy-first controls and cloud-native infrastructure
 
 ---
 
-## 🛠️ Local Development Setup
+## 🧠 Platform Capabilities
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/devillikevd/addasmriti-x.git
-   cd addasmriti-x
-   ```
+### Digital Twin & Memory Intelligence
+* Voice cloning, story synthesis, and memory emulation.
+* Conversational heritage agents with context-aware retrieval.
+* Multilingual memory understanding for Indian and global languages.
 
-2. **Frontend Setup:**
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-   *The frontend will be available at `http://localhost:3000`.*
+### Memory DNA Graph
+* 3D graph visualization of memories, people, and cultural nodes.
+* Relationship inference across time, location, and family history.
+* Semantic search powered by Pinecone and knowledge graph indexing.
 
-3. **Backend Setup (Docker):**
-   ```bash
-   cd backend
-   docker-compose up --build
-   ```
-   *The FastAPI server will start on `http://localhost:8000`.*
+### Generative Heritage Media
+* AI documentary generation from audio logs.
+* Automatic photo restoration and colorization.
+* Procedural background ambience matched to history and mood.
+
+### Community & Immersion
+* Video/audio Adda rooms for modern cultural exchange.
+* Gamified heritage challenges and community collections.
+* Live transcription, translation, and archive publishing.
 
 ---
 
-## 🌎 Deployment
+## 💻 Architecture
 
-AddaSmriti X is fully pre-configured for automated 1-click deployments:
-*   **Vercel:** A `vercel.json` file is included in the `frontend` directory for seamless Next.js edge deployments.
-*   **Production URL:** https://frontend-kappa-six-68.vercel.app
-*   **Render:** A root `render.yaml` Blueprint is included to deploy the FastAPI backend, PostgreSQL database, and frontend simultaneously.
+### Frontend
+* **Next.js 15** with App Router
+* **React 19 + TypeScript**
+* **Tailwind CSS** for responsive, glassmorphic UI
+* **Three.js / @react-three/fiber** for 3D spatial experiences
+* **Framer Motion** for polished transitions
+
+### Backend
+* **FastAPI** with Uvicorn
+* **PostgreSQL** via Render blueprint
+* **AI integrations:** OpenAI GPT-4o and Claude 3.5
+* **Vector search:** Pinecone
+* **Audio TTS:** ElevenLabs
+
+### Infrastructure
+* **Frontend deployment:** Vercel
+* **Backend + database:** Render
+* **Containerization:** Docker + Docker Compose
+* **Configuration as code:** `render.yaml` and `docker-compose.yml`
+
+---
+
+## 🔧 Local Development
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Access: `http://localhost:3000`
+
+### Backend
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+Access: `http://localhost:8000`
+
+### Full stack with Docker
+```bash
+docker-compose up --build
+```
+
+---
+
+## 📦 Deployment Notes
+* Use `vercel` or GitHub integration to deploy the frontend automatically.
+* Use `render.yaml` to provision the backend service and Postgres instance on Render.
+* If backend deployment is pending, authenticate the Render CLI and run:
+  ```bash
+  render workspace set <workspace-id>
+  render blueprints validate render.yaml
+  render deploys create <service-id> --confirm
+  ```
+
+---
+
+## 🧪 Quality + Ops
+* Written for production readiness with TypeScript, Pydantic, and typed API contracts.
+* Smart caching and edge-ready design for global access.
+* Ready for monitoring, logging, and observability once Render deployment is active.
 
 ---
 
 <div align="center">
-  <i>"AI preserves what time tries to erase."</i><br>
-  Built with ❤️ for the Future.
+  <i>"AddaSmriti X turns cultural memories into living digital heritage."</i><br>
+  Built for preservation, powered by AI.
 </div>
