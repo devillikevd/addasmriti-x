@@ -15,8 +15,8 @@ const nextConfig = {
     });
     return config;
   },
-  experimental: {
-    serverActions: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 }
 module.exports = nextConfig

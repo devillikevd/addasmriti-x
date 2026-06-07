@@ -111,7 +111,7 @@ export default function MemoryDNAPage() {
             linkColor={() => 'rgba(255,255,255,0.1)'}
             linkWidth={1}
             backgroundColor="#020617"
-            onNodeClick={(node) => setActiveNode(node)}
+            onNodeClick={(node: any) => setActiveNode(node)}
             enableNodeDrag={false}
           />
         )}

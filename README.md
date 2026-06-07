@@ -109,6 +109,7 @@ Built specifically to scale to 10M+ users, AddaSmriti X aims to be the definitiv
 
 AddaSmriti X is fully pre-configured for automated 1-click deployments:
 *   **Vercel:** A `vercel.json` file is included in the `frontend` directory for seamless Next.js edge deployments.
+*   **Production URL:** https://frontend-kappa-six-68.vercel.app
 *   **Render:** A root `render.yaml` Blueprint is included to deploy the FastAPI backend, PostgreSQL database, and frontend simultaneously.
 
 ---
