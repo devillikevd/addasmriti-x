@@ -1,0 +1,113 @@
+version: '3.9'
+
+services:
+  # ── PostgreSQL ─────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: addasmriti-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: addasmriti
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-securepassword}
+      POSTGRES_DB: addasmriti
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U addasmriti"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ──────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: addasmriti-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # ── AI Service (FastAPI) ───────────────────────────────────
+  ai-service:
+    build: ./backend/services/ai-service
+    container_name: addasmriti-ai
+    restart: unless-stopped
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY:-}
+      PINECONE_API_KEY: ${PINECONE_API_KEY:-}
+      REDIS_URL: redis://redis:6379/1
+    ports:
+      - "8002:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/services/ai-service:/app
+
+  # ── Memory Service (Django) ────────────────────────────────
+  memory-service:
+    build: ./backend/services/memory-service
+    container_name: addasmriti-memory
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://addasmriti:${POSTGRES_PASSWORD:-securepassword}@postgres:5432/addasmriti
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-secret-change-in-prod}
+      DEBUG: ${DEBUG:-true}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET:-addasmriti-media}
+    ports:
+      - "8001:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── Frontend (Next.js) ─────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: addasmriti-frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8001
+      NEXT_PUBLIC_AI_SERVICE_URL: http://localhost:8002
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-dev-secret}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - memory-service
+      - ai-service
+
+  # ── Nginx Reverse Proxy ────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    container_name: addasmriti-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - ai-service
+      - memory-service
+
+volumes:
+  postgres_data:
+  redis_data:
